@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const inputText = document.getElementById('inputText');
     const outputText = document.getElementById('outputText');
+    const copyButton = document.querySelector('.btn');
 
     const morseCode = {
         'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
@@ -13,6 +14,14 @@ document.addEventListener("DOMContentLoaded", function() {
         '0': '-----', ' ': '/'
     };
 
+    const reverseMorseCode = {}; 
+    for (const key in morseCode) { 
+        if (morseCode.hasOwnProperty(key)) { 
+            const value = morseCode[key]; 
+            reverseMorseCode[value] = key; 
+        } 
+    } 
+
     function translateToMorse(text) {
         return text.toLowerCase().split('').map(char => morseCode[char] || '').join(' ');
     }
@@ -20,4 +29,41 @@ document.addEventListener("DOMContentLoaded", function() {
     inputText.addEventListener('input', function() {
         outputText.value = translateToMorse(inputText.value);
     });
+
+    copyButton.addEventListener('click', function() {
+        copyTextToClipboard(outputText.value);
+        showSuccessMessage('showSuccessMessage', 'Copied to clipboard!');
+    });
 });
+
+const translateMorseToText = (morseText) => { 
+    const morseWords = morseText.split('/'); 
+    const translatedWords = 
+        morseWords.map((morseWord) => { 
+            const morseChars = morseWord.split(' '); 
+            return morseChars 
+                .map((morseChar) => { 
+                    return reverseMorseCode[morseChar] 
+                        || morseChar; 
+                }) 
+                .join(''); 
+        }); 
+    return translatedWords.join(' '); 
+}; 
+
+const showSuccessMessage = (elementId, message) => { 
+    const successMessage = document.getElementById(elementId); 
+    successMessage.textContent = message; 
+    setTimeout(() => { 
+        successMessage.textContent = ''; 
+    }, 2000); // Clear the message after 2 seconds 
+}; 
+
+const copyTextToClipboard = (text) => { 
+    const textArea = document.createElement("textarea"); 
+    textArea.value = text; 
+    document.body.appendChild(textArea); 
+    textArea.select(); 
+    document.execCommand('copy'); 
+    document.body.removeChild(textArea); 
+};
