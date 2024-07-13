@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href=design.css>
+    <link rel="stylesheet" href="design.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morse Code Translator</title>
@@ -10,12 +10,14 @@
     <div class="container">
         <div class="box input-box">
             <textarea id="inputText" placeholder="Enter text here"></textarea>
-        </div>
+        </div>  
+
         <div class="box output-box">
             <textarea id="outputText" placeholder="Morse code output" readonly></textarea>
+            <button class="btn" onclick="copyTextToClipboard()">Copy</button>
+            <p class="success-message" id="showSuccessMessage"></p>
         </div>
     </div>
-    <script src="main.js">  </script>
+    <script src="main.js"></script>
 </body>
-
 </html>
