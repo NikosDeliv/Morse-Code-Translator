@@ -1,4 +1,8 @@
+Current features:
+  Interchangable translation through selection box with options for Text and Morse
+  Copying the result to clipboard
+  automatic translation without the need to press a button to do so
+
 
 Things to add
-- Make the translation interchangeable so it can translate from text to morse code and vice versa
-- Add ability to listen to the morse code
+  Ability to listen to the morse code result 
