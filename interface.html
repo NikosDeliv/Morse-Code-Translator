@@ -1,4 +1,4 @@
-html <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="design.css">
@@ -11,7 +11,7 @@ html <!DOCTYPE html>
     <label for="translation"> Choose what to translate </label>
     <select name="Translate" id="Translate">
         <option value="Text">Text</option>
-        <option value="Morse Code">Morse Code</option>
+        <option value="Morse">Morse</option>
     </select>
     <div class="container">
         <div class="box input-box">
@@ -19,7 +19,7 @@ html <!DOCTYPE html>
         </div>  
         
         <div class="box output-box">
-            <textarea id="outputText" placeholder="Morse code output" readonly></textarea>
+            <textarea id="outputText" placeholder="Translation output" readonly></textarea>
             <button class="btn" onclick="copyTextToClipboard()">Copy</button>
             <button class="btn" onclick="">Play</button>
             <p class="success-message" id="showSuccessMessage"></p>
