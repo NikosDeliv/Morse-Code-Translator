@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="design.css">
@@ -7,17 +7,26 @@
     <title>Morse Code Translator</title>
 </head>
 <body>
+    <h1>Morse Code Translator</h1>
+    <label for="translation"> Choose what to translate </label>
+    <select name="Translate" id="Translate">
+        <option value="Text">Text</option>
+        <option value="Morse Code">Morse Code</option>
+    </select>
     <div class="container">
         <div class="box input-box">
             <textarea id="inputText" placeholder="Enter text here"></textarea>
         </div>  
-
+        
         <div class="box output-box">
             <textarea id="outputText" placeholder="Morse code output" readonly></textarea>
             <button class="btn" onclick="copyTextToClipboard()">Copy</button>
+            <button class="btn" onclick="">Play</button>
             <p class="success-message" id="showSuccessMessage"></p>
         </div>
     </div>
+
+    <img src="InternationalMorseCode.png" alt=" morse code dictionary" style="width: 55vw; min-width: 330px;" />
     <script src="main.js"></script>
 </body>
 </html>

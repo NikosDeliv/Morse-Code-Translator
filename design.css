@@ -1,25 +1,50 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Align items to the top */
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: #f5f5f5; /* Light background for a clean look */
+    color: #333; /* Slightly softer text color */
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px; /* Move the heading higher */
+    font-size: 2.5em; /* Slightly larger heading */
 }
 
 .container {
     display: flex;
     gap: 20px; /* Adjust the space between the boxes */
     margin-bottom: 20px; /* Space between the boxes and the language picker */
+    flex-wrap: wrap; /* Allow boxes to wrap on smaller screens */
+    justify-content: center; /* Center the boxes */
+    margin-top: 40px; /* Space between the heading and the boxes */
 }
 
 .box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 300px; /* Adjust the width as needed */
-    height: 200px; /* Adjust the height as needed */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 280px; /* Slightly narrower for better spacing */
+    height: 180px; /* Slightly shorter for better balance */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    background-color: #fff; /* White background for boxes */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition on hover */
+}
+
+.box:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+label {
+    margin-top: 20px; /* Adjust the space above the label */
+    font-weight: bold; /* Bold label text */
 }
 
 textarea {
@@ -28,11 +53,20 @@ textarea {
     border: none;
     outline: none;
     resize: none; /* Prevents resizing of the textarea */
+    font-size: 1em; /* Uniform font size */
+    padding: 10px; /* Padding inside textarea for better readability */
+    border-radius: 5px; /* Rounded corners for textarea */
+    box-sizing: border-box; /* Ensures padding doesn't affect overall size */
 }
 
- 
-.btn { 
-    background-color: black; 
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between the buttons */
+    margin-top: 20px; /* Space between the boxes and the buttons */
+}
+
+.btn {
+    background-color: #333; 
     color: #ffffff; 
     border: none; 
     padding: 13px; 
@@ -40,17 +74,27 @@ textarea {
     outline: none; 
     cursor: pointer; 
     box-shadow: 0 0 10px 0px grey; 
-    margin: 5px; 
-} 
-  
+    margin: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition on hover */
+}
+
 .btn:hover { 
-    background-color: #040f1b; 
-} 
-  
+    background-color: #555; /* Slightly lighter hover effect */
+    box-shadow: 0 0 15px 0px grey; /* Deeper shadow on hover */
+}
 
 .success-message { 
     color: rgb(2, 27, 2); 
     margin-top: 10px; 
     font-weight: bold; 
-    font-family: Edge 12; 
+    font-family: 'Arial', sans-serif; 
+}
+
+body > img {
+    width: 55vw;
+    min-width: 330px;
+    max-width: 100%;
+    margin-top: 40px; /* Adjusted space between the boxes and the image */
+    border-radius: 10px; /* Rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
 }
