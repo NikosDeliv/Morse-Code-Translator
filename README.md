@@ -2,8 +2,9 @@ Current features:
 
 Interchangable translation through selection box with options for Text and Morse
 
-Copying the result to clipboard
-automatic translation without the need to press a button to do so
+Copying the result to clipboard 
+
+Instant translation 
 
 
 Things to add:
