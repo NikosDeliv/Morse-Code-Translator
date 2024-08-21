@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const outputText = document.getElementById('outputText');
     const copyButton = document.querySelector('.btn');
     const translateSelect = document.getElementById('Translate');
+    const playButton = document.getElementById('playButton');
 
     const morseCode = {
         'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
@@ -57,21 +58,69 @@ document.addEventListener("DOMContentLoaded", function() {
         copyTextToClipboard(outputText.value);
         showSuccessMessage('showSuccessMessage', 'Copied to clipboard!');
     });
+
+    playButton.addEventListener('click', function() { // Added event listener for play button
+        playMorseCode(outputText.value);
+    });
+
+    const showSuccessMessage = (elementId, message) => {
+        const successMessage = document.getElementById(elementId);
+        successMessage.textContent = message;
+        setTimeout(() => {
+            successMessage.textContent = '';
+        }, 2000);
+    };
+
+    const copyTextToClipboard = (text) => {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    };
+
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    var ctx = new AudioContext();
+    var dot = 1.2 / 15;
+
+    function playMorseCode(morseCode) {
+        var t = ctx.currentTime;
+
+        var oscillator = ctx.createOscillator();
+        oscillator.type = "sine";
+        oscillator.frequency.value = 600;
+
+        var gainNode = ctx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(ctx.destination);
+
+        gainNode.gain.setValueAtTime(0, t);
+
+        morseCode.split("").forEach(function(letter) {
+            switch (letter) {
+                case '.':
+                    gainNode.gain.setValueAtTime(1, t);
+                    t += dot;
+                    gainNode.gain.setValueAtTime(0, t);
+                    t += dot;
+                    break;
+                case '-':
+                    gainNode.gain.setValueAtTime(1, t);
+                    t += 3 * dot;
+                    gainNode.gain.setValueAtTime(0, t);
+                    t += dot;
+                    break;
+                case ' ':
+                    t += 3 * dot;
+                    break;
+                case '/':
+                    t += 7 * dot;
+                    break;
+            }
+        });
+
+        oscillator.start();
+        oscillator.stop(t);
+    }
 });
-
-const showSuccessMessage = (elementId, message) => {
-    const successMessage = document.getElementById(elementId);
-    successMessage.textContent = message;
-    setTimeout(() => {
-        successMessage.textContent = '';
-    }, 2000);
-};
-
-const copyTextToClipboard = (text) => {
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-};
